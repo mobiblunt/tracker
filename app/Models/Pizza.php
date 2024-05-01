@@ -15,4 +15,19 @@ class Pizza extends Model
         'toppings' => 'array',
     ];
 
+    protected $appends = [
+        'chef',
+    ];
+
+    protected $hidden = [
+        'user',
+    ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function getChefAttribute() {
+        return $this->user->name;
+    }
+
 }
