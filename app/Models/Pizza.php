@@ -17,6 +17,7 @@ class Pizza extends Model
 
     protected $appends = [
         'chef',
+        'last_updated',
     ];
 
     protected $hidden = [
@@ -30,4 +31,7 @@ class Pizza extends Model
         return $this->user->name;
     }
 
+    public function getLastUpdatedAttribute() {
+        return $this->updated_at->diffForHumans();
+    }
 }
